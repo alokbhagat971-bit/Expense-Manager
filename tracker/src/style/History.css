@@ -1,0 +1,57 @@
+ul {
+  list-style: none;
+  margin-top: 10px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* scrollbar */
+ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background-color: #c7c7c7;
+  border-radius: 4px;
+}
+
+li {
+  background-color: #f9fafb;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px; /* spacing between items */
+}
+
+/* LEFT: title */
+.history-left {
+  flex: 1;                 /* takes remaining space */
+  font-size: 14px;
+  color: #333;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* RIGHT: amount */
+.income {
+  color: #1e8e5a;
+  font-weight: 600;
+}
+
+.expense {
+  color: #d93025;
+  font-weight: 600;
+}
+
+/* delete icon */
+img {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}

@@ -1,0 +1,18 @@
+.container {
+  background-color: #ffffff;
+  width: 380px;
+  min-width: 360px;          /* 🔥 minimum width */
+  max-height: 85vh;          /* 🔥 fixed height */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+  overflow-y: auto;          /* 🔥 enables vertical scrolling */
+}
+
+
+.Heading h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
