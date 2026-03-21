@@ -1,50 +1,79 @@
-import propTypes from 'prop-types';
-import {useContext} from 'react';
-import { BalanceContext } from '../context/BalanceContext';
-import bin from '../assets/bin.png';
+import propTypes from "prop-types"
+import {useContext} from "react"
+import {BalanceContext} from "../context/BalanceContext"
+import bin from "../assets/bin.png"
 import "../style/History.css"
 
-function History({transaction,setTransaction}) {
-  const {setBalance,setIncome,setExpense}=useContext(BalanceContext);
-  function deleteTransaction(indexToDelete){
-    if(transaction[indexToDelete].type==="Income"){
-      setIncome((prevIncome) => prevIncome-transaction[indexToDelete].amount);
-      setBalance((prevBalance) => prevBalance-transaction[indexToDelete].amount);
+function History({transaction,setTransaction}){
+
+  const {setBalance,setIncome,setExpense} = useContext(BalanceContext)
+
+  const token = localStorage.getItem("token")
+
+  async function deleteTransaction(id,index){
+
+    const item = transaction[index]
+
+    try{
+
+      await fetch(`http://localhost:3000/api/expenses/${id}`,{
+        method:"DELETE",
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      })
+
+      if(item.type==="Income"){
+        setIncome(prev=>prev-item.amount)
+        setBalance(prev=>prev-item.amount)
+      }else{
+        setExpense(prev=>prev-item.amount)
+        setBalance(prev=>prev+item.amount)
+      }
+
+      setTransaction(transaction.filter(t=>t._id !== id))
+
+    }catch(err){
+      console.log(err)
     }
-    else{
-      setExpense((prevExpense) => prevExpense-transaction[indexToDelete].amount);
-      setBalance((prevBalance) => prevBalance+transaction[indexToDelete].amount);
-    }
-    setTransaction(transaction.filter((_,index) => index!== indexToDelete));
 
   }
+
   return (
     <>
       <h3>History</h3>
+
       <ul>
-        {transaction.map((item,index) => (
-          <li key={index}>
-        <span className="history-left">{item.title}</span>
+        {transaction.map((item,index)=>(
 
-        <span className={item.type === "Income" ? "income" : "expense"}>
-          {item.type === "Income" ? "+₹" : "-₹"}
-          {item.amount}
-        </span>
+          <li key={item._id}>
 
-        <img
-          src={bin}
-          alt="delete"
-          onClick={() => deleteTransaction(index)}
-        />
-       </li>
+            <span className="history-left">
+              {item.title}
+            </span>
+
+            <span className={item.type==="Income" ? "income" : "expense"}>
+              {item.type==="Income" ? "+₹" : "-₹"}
+              {item.amount}
+            </span>
+
+            <img
+              src={bin}
+              alt="delete"
+              onClick={()=>deleteTransaction(item._id,index)}
+            />
+
+          </li>
 
         ))}
       </ul>
     </>
-  );
+  )
 }
+
 History.propTypes={
   transaction:propTypes.array.isRequired,
-  setTransaction:propTypes.func.isRequired,
+  setTransaction:propTypes.func.isRequired
 }
+
 export default History

@@ -1,18 +1,19 @@
-import { PieChart,Pie,Cell,Tooltip,Legend } from 'recharts';
-import { useContext } from 'react'
-import { BalanceContext } from "../context/BalanceContext";
+import { PieChart,Pie,Cell,Tooltip,Legend } from "recharts"
+import { useContext } from "react"
+import { BalanceContext } from "../context/BalanceContext"
 
-const COLORS = ["#1e8e5a", "#d93025"];
+const COLORS = ["#1e8e5a","#d93025"]
 
-function ExpensePieChart() {
-  const { income,expense } = useContext(BalanceContext);
+function ExpensePieChart(){
+
+  const {income,expense} = useContext(BalanceContext)
 
   const data=[
     {name:"Income",value:income},
     {name:"Expense",value:expense}
-   ];
-  
-   return (
+  ]
+
+  return(
     <PieChart width={250} height={200}>
       <Pie
         data={data}
@@ -23,15 +24,15 @@ function ExpensePieChart() {
         outerRadius={50}
         label
       >
-        {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+        {data.map((entry,index)=>(
+          <Cell key={index} fill={COLORS[index % COLORS.length]}/>
         ))}
-
       </Pie>
-      <Tooltip />
-      <Legend />
-    </PieChart>
 
-   );
+      <Tooltip/>
+      <Legend/>
+    </PieChart>
+  )
 }
-export default ExpensePieChart;
+
+export default ExpensePieChart

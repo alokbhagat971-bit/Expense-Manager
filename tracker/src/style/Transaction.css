@@ -18,12 +18,12 @@ form label {
   cursor: pointer;
 }
 
-#incomeRadio, #expenseRadio {
-  margin-right: 6px;
+#income, #expense {
   cursor: pointer;
 }
 
 button {
+  margin:15px;
   width: 100%;
   padding: 10px;
   background-color: #4f46e5;
@@ -37,4 +37,17 @@ button {
 
 button:hover {
   background-color: #4338ca;
+}
+
+.transaction-type{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 25px;
+}
+
+.transaction-type label{
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
