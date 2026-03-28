@@ -1,44 +1,42 @@
 # Expense Manager
 
-A simple web application to track daily expenses and manage personal spending.
-This project was built to understand how CRUD operations work along with basic backend integration.
+A web application to track daily expenses with user authentication.
+Each user can securely manage their own expenses after logging in.
 
 ## Features
 
-* Add new expenses with details
+* User signup and login system
+* Authentication-based access
+* Add new expenses
 * View all saved expenses
-* Delete expenses whenever needed
-* Simple and easy-to-use interface
-* Data stored and managed through backend
+* Delete expenses anytime
+* Each user can access only their own data
 
 ## Tech Stack
 
 * Frontend: HTML, CSS, JavaScript
 * Backend: Node.js, Express
 * Database: MongoDB
+* Authentication: JWT / Session (based on implementation)
 
 ## Project Idea
 
-The goal of this project was to build something practical that helps in tracking day-to-day spending.
+The main goal of this project was to build a practical application while learning how authentication and user-specific data handling work.
 
-Users can:
+After logging in, users can:
 
-* Add expenses with amount and description
-* See a list of all expenses
-* Remove any expense they don’t want to keep
+* Add their expenses
+* View all their saved expenses
+* Delete any expense
 
-This is a basic expense tracker, but it gives a clear idea of how real-world apps store and manage user data.
+All data is linked to the logged-in user, ensuring privacy and proper data separation.
 
 ## How It Works
 
-The user enters expense details through the UI.
-That data is sent to the backend and stored in the database.
-
-Whenever the page loads:
-
-* All saved expenses are fetched
-* Displayed in a list format
-* Users can delete any entry instantly
+* A user signs up or logs in
+* After authentication, they are redirected to their dashboard
+* Expenses are stored in the database and mapped to that user
+* Only that user's expenses are fetched and displayed
 
 ## Installation & Setup
 
@@ -87,19 +85,19 @@ Expense-Manager/
 
 ## What I Learned
 
-* How CRUD operations work in real applications
-* Connecting frontend with backend
-* Handling data using MongoDB
-* Structuring a backend project properly
+* Implementing authentication in a web app
+* Managing user-specific data securely
+* CRUD operations with backend and database
+* Structuring a full-stack project
 
 ## Future Improvements
 
-* Add authentication (login/signup)
 * Categorize expenses
-* Monthly/weekly reports
-* Charts/analytics
-* Better UI
+* Add filters (date-wise, category-wise)
+* Monthly reports / summaries
+* Charts and analytics
+* Improve UI/UX
 
 ---
 
-This project was built while learning backend development and trying to understand how real applications handle data.
+This project was built while learning backend development and understanding how real-world applications handle user data and authentication.
