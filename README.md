@@ -14,7 +14,7 @@ Each user can securely manage their own expenses after logging in.
 
 ## Tech Stack
 
-* Frontend: HTML, CSS, JavaScript
+* Frontend: React.js
 * Backend: Node.js, Express
 * Database: MongoDB
 * Authentication: JWT / Session (based on implementation)
